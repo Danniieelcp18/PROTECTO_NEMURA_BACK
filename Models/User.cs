@@ -1,17 +1,31 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PROYECTO_NEMURA.Models;
 
 public class User
 {
+    [Key]
     public required int Id { get; set; }
+
+    [MinLength(3, ErrorMessage = "El nombre debe tener al menos {1} caracter")]
+    [MaxLength(120, ErrorMessage = "El nombre debe tener como maximo {1} caracter ")]
     public required string Name { get; set; }
-    public required string LastName {get;set;}
-    public required string NickName {get;set;}
+
+    [MinLength(3, ErrorMessage = "El apelllido debe tener al menos {1} caracter")]
+    [MaxLength(120, ErrorMessage = "El apellido debe tener como maximo {1} caracter ")]
+    public required string LastName { get; set; }
+
+    [MinLength(3, ErrorMessage = "El nick name debe tener al menos {1} caracter")]
+    [MaxLength(120, ErrorMessage = "El nick  name debe tener como maximo {1} caracter ")]
+    public required string NickName { get; set; }
+
+    [EmailAddress(ErrorMessage = "El campo de correo electrónico utiliza un formato no válido")]
+    [MinLength(5, ErrorMessage = "El campo de correo electrónico debe tener al menos {1} carácter")]
+    [MaxLength(120, ErrorMessage = "El campo de correo electrónico debe tener como máximo {1} carácter")]
     public required string Email { get; set; }
+
     public required string Password { get; set; }
 
 }
+
