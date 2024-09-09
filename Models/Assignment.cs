@@ -10,8 +10,7 @@ namespace PROYECTO_NEMURA.Models;
     { public required int IdAssignment {get;set;}
     public required string NameAssignemt {get;set;}
     public required string Description {get;set;}
-    public required DateTime DateStart {get;set;}
-    public required DateTime Duration {get;set;}
+
     public required E_Statustype Statustype {get;set;}
     public required EPriorityType PriorityType {get;set;}
 
