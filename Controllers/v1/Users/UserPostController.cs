@@ -5,6 +5,7 @@ using PROYECTO_NEMURA.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.Diagnostics;
+using PROYECTO_NEMURA.DTOS;
 
 
 namespace PROYECTO_NEMURA.Controllers.v1.Users;
@@ -49,9 +50,9 @@ public class UserPostController : ControllerBase
 
     }
     [HttpPost("LoginUser")]
-    public async Task<IActionResult> LoginrUser(string nickname, string password)
+    public async Task<IActionResult> LoginrUser(UserDTOLogin login)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.NickName == nickname && u.Password == password);
+        var user  = await _context.Users.FirstOrDefaultAsync(u => u.NickName ==  login.NickName && u.Password == login.Password);
         if (user == null)
         {
             return NotFound("Datos incorrectos");
