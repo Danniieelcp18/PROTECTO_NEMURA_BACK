@@ -12,7 +12,7 @@ namespace PROYECTO_NEMURA.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240909183739_se crean las tablas user,project, assignment")]
-    partial class secreanlastablasuserprojectassignment
+    partial class Secreanlastablasuserprojectassignment
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
