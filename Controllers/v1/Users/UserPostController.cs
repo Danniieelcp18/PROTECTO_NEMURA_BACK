@@ -30,7 +30,7 @@ public class UserPostController : ControllerBase
             return Ok("Se registro exitosamente");
 
         }
-        
+
         return NotFound();
 
     }
@@ -48,9 +48,22 @@ public class UserPostController : ControllerBase
         return NotFound();
 
     }
-    
-    
+    [HttpPost("LoginUser")]
+    public async Task<IActionResult> LoginrUser(string nickname, string password)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.NickName == nickname && u.Password == password);
+        if (user == null)
+        {
+            return NotFound("Datos incorrectos");
+
+        }
+        return Ok(user);
+
     }
 
- 
+
+
+}
+
+
 
