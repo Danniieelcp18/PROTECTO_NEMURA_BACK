@@ -10,10 +10,10 @@ namespace PROYECTO_NEMURA.Models;
 public class Project 
 {
     [Key]
-    public required int IdProject { get; set; }
+    public int IdProject { get; set; }
 
     [MinLength(3, ErrorMessage = "El nombre debe tener al menos {1} caracter")]
-    [MaxLength(120, ErrorMessage = "El nombre debe tener como maximo {1} caracter ")]
+    [MaxLength(255, ErrorMessage = "El nombre debe tener como maximo {1} caracter ")]
     public required string NameProject { get; set; }
     public required int UserId { get; set; }
 

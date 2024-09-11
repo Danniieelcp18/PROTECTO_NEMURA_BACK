@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PROYECTO_NEMURA.Migrations
 {
     /// <inheritdoc />
-    public partial class secreanlastablasuserprojectassignment : Migration
+    public partial class Secreanlastablasuserprojectassignment : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

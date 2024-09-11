@@ -11,14 +11,14 @@ public class Assignment
 
 {
     [Key]
-    public required int IdAssignment { get; set; }
+    public  int IdAssignment { get; set; }
     [MinLength(3, ErrorMessage = "El nombre debe tener al menos {1} caracter")]
-    [MaxLength(120, ErrorMessage = "El nombre debe tener como maximo {1} caracter ")]
+    [MaxLength(255, ErrorMessage = "El nombre debe tener como maximo {1} caracter ")]
 
 
     public required string NameAssignemt { get; set; }
     [MinLength(3, ErrorMessage = "La descripcion debe tener al menos {1} caracter")]
-    [MaxLength(250, ErrorMessage = "La description debe tener como maximo {1} caracter ")]
+    [MaxLength(255, ErrorMessage = "La description debe tener como maximo {1} caracter ")]
     public required string Description { get; set; }
     public required int ProjectId {get;set;}
 
@@ -31,7 +31,7 @@ public class Assignment
         ToDo,
         InProgress,
         Done
-    }
+    }   
     public enum EPriorityType
     {
         Low,
