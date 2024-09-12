@@ -11,7 +11,7 @@ using PROYECTO_NEMURA.DTOS;
 namespace PROYECTO_NEMURA.Controllers.v1.Users;
 
 [ApiController]
-[Route("api/v1/User")]
+[Route("api/v1/Users")]
 
 public class UserPostController : ControllerBase
 {
