@@ -36,7 +36,7 @@ public class UserPostController : ControllerBase
 
     }
 
-    [HttpPost("CreatePrejet")]
+    [HttpPost("CreateProjet")]
     public async Task<IActionResult> CreateProject(Project project)
     {
         if (ModelState.IsValid)
