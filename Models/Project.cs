@@ -18,5 +18,6 @@ public class Project
     public required int UserId { get; set; }
 
     [ForeignKey("UserId")]
+    
     public User? User{get;set;}
 }

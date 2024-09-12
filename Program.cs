@@ -17,6 +17,18 @@ var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
 var mySqlConnection = $"server={dbHost};port={dbPort};database={dbDatabaseName};uid={dbUser};password={dbPassword}";
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(mySqlConnection, ServerVersion.Parse("8.0.20-mysql")));
+
+builder.Services.AddCors(options =>
+{
+options.AddPolicy("AllowSpecificOrigin",
+    builder =>
+    {
+        builder.WithOrigins("http://127.0.0.1:5173", "http://localhost:5173")
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowCredentials();
+    });
+});
 /* 
 builder.Services.AddControllersWithViews(); */
 
@@ -35,8 +47,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
+/* 
+app.UseHttpsRedirection(); */
+app.UseCors("AllowSpecificOrigin");
 
 app.UseAuthorization();
 
