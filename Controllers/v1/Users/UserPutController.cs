@@ -42,4 +42,18 @@ public class UserPutController : ControllerBase
         return Ok("usuario editado correctamente");
     }
 
+    [HttpPut("EditProject")]
+    public async Task<IActionResult>EditProject(int id,ProjectDtoEdit project)
+    {
+        var projectfound = await _contex.Projects.FindAsync(id);
+
+        if (projectfound== null)
+        {
+            return NotFound ("Proyecto no encontrado");
+        }
+        projectfound.NameProject = project.NameProject;
+        await _contex.SaveChangesAsync();
+        return Ok ("Poyecto editado correctamente");
+    }
+
 }
