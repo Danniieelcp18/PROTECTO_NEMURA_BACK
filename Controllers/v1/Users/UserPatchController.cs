@@ -17,7 +17,7 @@ public class UserPatchController : ControllerBase
     }
 
     [HttpPatch("EditNameUser")]
-    public async Task<IActionResult> EditNameUser(int id, [FromBody] UserDtoEdit editName)
+    public async Task<IActionResult> EditNameUser(int id, [FromBody] UserDtoName editName)
     {
         var idFound = await _context.Users.FindAsync(id);
         if (idFound == null)
@@ -30,8 +30,8 @@ public class UserPatchController : ControllerBase
         return Ok("Nombre editado correctamente");
     }
 
-    [HttpPatch("EditLastNameUser/{id}")]
-    public async Task<IActionResult> EditLastName(int id, [FromBody] UserDtoEdit editLastName)
+    [HttpPatch("EditLastNameUser")]
+    public async Task<IActionResult> EditLastName(int id, [FromBody] UserDtoLastName editLastName)
     {
         var idFound = await _context.Users.FindAsync(id);
         if (idFound == null)
@@ -44,7 +44,7 @@ public class UserPatchController : ControllerBase
     }
 
     [HttpPatch("EditEmailUser")]
-    public async Task<IActionResult> EditEmail(int id, [FromBody] UserDtoEdit editEmail)
+    public async Task<IActionResult> EditEmail(int id, [FromBody] UserDtoEmail editEmail)
     {
         var idFound = await _context.Users.FindAsync(id);
         if (idFound == null)
@@ -56,7 +56,7 @@ public class UserPatchController : ControllerBase
         return Ok("Correo editado correctamente");
     }
     [HttpPatch("EditNickNameUser")]
-    public async Task<IActionResult> EditNickName(int id, UserDtoEdit editNickName)
+    public async Task<IActionResult> EditNickName(int id, UserDtoNickName editNickName)
     {
         var idFound = await _context.Users.FindAsync(id);
         if (idFound == null)
