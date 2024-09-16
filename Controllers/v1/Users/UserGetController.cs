@@ -55,7 +55,7 @@ namespace PROYECTO_NEMURA.Controllers.v1.Users;
 
             if ( getId == null || !getId.Any())
             {
-                return NotFound("No se encotraron projectos asociadios a ese Id ");
+                return NotFound("No se encotraron projectos asociados a ese Usuario ");
             }
             return Ok(getId);
         }
