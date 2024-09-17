@@ -10,10 +10,10 @@ namespace PROYECTO_NEMURA.Controllers.v1.Projects;
 
 [ApiController]
 [Route("api/v1/Projects")]
-public class AssingmentPutController : ControllerBase
+public class AssignmentPutController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
-    public AssingmentPutController(ApplicationDbContext context)
+    public AssignmentPutController(ApplicationDbContext context)
     {
         _context = context;
     }
