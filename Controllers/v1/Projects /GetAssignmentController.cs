@@ -27,30 +27,64 @@ public class GetAssignmentController : ControllerBase
         {
             return NotFound("No se encotraron tareas asociadas a ese proyecto");
         }
-        return Ok (getIdProject);
+        var result = getIdProject.Select (a=> new{
+            a.IdAssignment,
+            a.NameAssignemt,
+            a.Description,
+            a.ProjectId,
+            E_Statustype = a.StatustypeString,
+            EPriorityType= a.PriorityTypeString
+
+
+        });
+        return Ok (result);
     }
 
     [HttpGet("GetAssignmentByid")]
     
     public async Task<IActionResult>GetById(int id)
     {
-        var getId = await _context.Assignments.FindAsync(id);
-        if (getId== null)
+        var getIdProject = await _context.Assignments.Where(p => p.IdAssignment == id).ToListAsync();
+
+        if (getIdProject == null || !getIdProject.Any())
         {
-            return NotFound("Tarea no encontrada");
+            return NotFound("tarea no encontrada ");
         }
-        return Ok (getId);
+        var result = getIdProject.Select(a => new
+        {
+            a.IdAssignment,
+            a.NameAssignemt,
+            a.Description,
+            a.ProjectId,
+            E_Statustype = a.StatustypeString,
+            EPriorityType = a.PriorityTypeString
+
+
+        });
+        return Ok(result);
     }
     [HttpGet("GetAssignmentByName")]
 
     public async Task<IActionResult> GetByNme(string name)
     {
-        var getName = await _context.Assignments.FindAsync(name);
-        if (getName == null)
+        var getIdProject = await _context.Assignments.Where(p => p.NameAssignemt == name).ToListAsync();
+
+        if (getIdProject == null || !getIdProject.Any())
         {
-            return NotFound("Tarea no encontrada");
+            return NotFound("tarea no encontrada ");
         }
-        return Ok(getName);
+        var result = getIdProject.Select(a => new
+        {
+            a.IdAssignment,
+            a.NameAssignemt,
+            a.Description,
+            a.ProjectId,
+            E_Statustype = a.StatustypeString,
+            EPriorityType = a.PriorityTypeString
+
+
+        });
+        return Ok(result);
     }
 
 
