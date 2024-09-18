@@ -25,7 +25,7 @@ public class User
     [MaxLength(255, ErrorMessage = "El campo de correo electrónico debe tener como máximo {1} carácter")]
     public required string Email { get; set; }
 
-    public required string Password { get; set; }
+    public required string Password{ get; set; }
 
 }
 
