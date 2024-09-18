@@ -1,6 +1,9 @@
 
+using System.Text;
 using DotNetEnv;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using PROYECTO_NEMURA.DataBase;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +38,29 @@ builder.Services.AddControllersWithViews(); */
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+// creacion del JWT  para el proyecto 
+Env.Load();
+var  keyJwt= Environment.GetEnvironmentVariable("KEY_JWT");
+
+var key = Encoding.ASCII.GetBytes(keyJwt);
+builder.Services.AddAuthentication (x=>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -51,6 +77,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection(); */
 app.UseCors("AllowSpecificOrigin");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

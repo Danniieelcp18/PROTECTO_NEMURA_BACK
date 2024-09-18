@@ -32,8 +32,8 @@ public class UserPostController : ControllerBase
         {
 
             user.Password = _passwordHasher.HashPassword(user, user.Password);
-            user.Password= null;
-            
+           
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return Ok("Se registro exitosamente");
