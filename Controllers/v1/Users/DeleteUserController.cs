@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PROYECTO_NEMURA.DataBase;
 
@@ -17,6 +18,7 @@ public class DeleteUserController : ControllerBase
     {
         _contex = context;
     }
+    
     [HttpDelete("DeleteUser")]
     public async Task<IActionResult> DeleteUser(int id)
     {
